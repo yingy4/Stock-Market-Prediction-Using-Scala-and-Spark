@@ -16,8 +16,10 @@ cache:
 
 script:
   - cd $TRAVIS_BUILD_DIR/Stock-Market-Prediction
-  - sbt ++$TRAVIS_SCALA_VERSION clean
-  - sbt ++$TRAVIS_SCALA_VERSION test
+  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test
+  - sbt ++$TRAVIS_SCALA_VERSION coverageReport
+  - sbt ++$TRAVIS_SCALA_VERSION coverageAggregate
+  - sbt ++$TRAVIS_SCALA_VERSION codacyCoverage
   
 before_cache:
 - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print0 | xargs -n10 -0 rm
